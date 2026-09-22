@@ -54,53 +54,63 @@ function Lightbox({ image, images, onClose, onNavigate }) {
     return () => window.removeEventListener('keydown', handler)
   }, [onClose])
 
+  // Lock body scroll while lightbox is open
+  useEffect(() => {
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [])
+
   return (
     <AnimatePresence>
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="lightbox-overlay"
+        className="lightbox-overlay p-3 sm:p-6"
         onClick={onClose}
       >
         <motion.div
-          initial={{ scale: 0.8, opacity: 0 }}
+          initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          exit={{ scale: 0.8, opacity: 0 }}
+          exit={{ scale: 0.9, opacity: 0 }}
           transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-          className="relative max-w-5xl w-full mx-4"
+          className="relative max-w-5xl w-full"
           onClick={(e) => e.stopPropagation()}
         >
+          {/* In-viewport Close Button with 44px touch target */}
           <button
             id="lightbox-close-btn"
             onClick={onClose}
-            className="absolute -top-12 right-0 text-white/70 hover:text-gold transition-colors"
+            className="absolute top-3 right-3 z-30 w-11 h-11 rounded-full bg-black/80 border border-gold/50 flex items-center justify-center text-white hover:text-gold transition-colors shadow-lg active:scale-95"
+            aria-label="Close modal"
           >
-            <X size={32} />
+            <X size={22} />
           </button>
 
-          <div className="relative rounded-2xl overflow-hidden"
+          <div className="relative rounded-2xl overflow-hidden bg-black/95"
             style={{ border: '2px solid rgba(212,175,55,0.5)', boxShadow: '0 0 60px rgba(212,175,55,0.2)' }}>
             <img
               src={image.src}
               alt={image.caption}
-              className="w-full max-h-[75vh] object-contain bg-black/90"
+              className="w-full max-h-[60vh] sm:max-h-[72vh] object-contain bg-black/90"
             />
-            <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/90 to-transparent">
-              <p className="font-playfair text-white text-lg">{image.caption}</p>
-              <p className="font-poppins text-gold text-sm capitalize mt-1">{image.category}</p>
+            <div className="p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
+              <p className="font-playfair text-white text-base sm:text-lg leading-tight">{image.caption}</p>
+              <p className="font-poppins text-gold text-xs sm:text-sm capitalize mt-0.5">{image.category}</p>
             </div>
           </div>
 
           {images.length > 1 && (
-            <div className="flex justify-between items-center mt-4">
+            <div className="flex justify-between items-center mt-3 sm:mt-4">
               <button id="lightbox-prev-btn" onClick={() => onNavigate(-1)} disabled={currentIndex === 0}
-                className="btn-outline-gold py-2 px-4 disabled:opacity-30">
+                className="btn-outline-gold py-2 px-3 sm:px-4 text-xs sm:text-sm min-h-[44px] disabled:opacity-30">
                 <ChevronLeft size={16} /> Prev
               </button>
-              <span className="text-white/50 font-poppins text-sm">{currentIndex + 1} / {images.length}</span>
+              <span className="text-white/60 font-poppins text-xs sm:text-sm">{currentIndex + 1} / {images.length}</span>
               <button id="lightbox-next-btn" onClick={() => onNavigate(1)} disabled={currentIndex === images.length - 1}
-                className="btn-outline-gold py-2 px-4 disabled:opacity-30">
+                className="btn-outline-gold py-2 px-3 sm:px-4 text-xs sm:text-sm min-h-[44px] disabled:opacity-30">
                 Next <ChevronRight size={16} />
               </button>
             </div>
@@ -116,22 +126,22 @@ function Lightbox({ image, images, onClose, onNavigate }) {
 // ─────────────────────────────────────────
 function ImageGrid({ images, onImageClick }) {
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2.5 sm:gap-4">
       {images.map((image, i) => (
         <motion.div
           key={image.id}
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: i * 0.04, duration: 0.4 }}
-          className="img-frame aspect-[4/3] cursor-pointer group"
+          transition={{ delay: i * 0.03, duration: 0.35 }}
+          className="img-frame aspect-[4/3] cursor-pointer group rounded-xl"
           onClick={() => onImageClick(image)}
         >
           <img src={image.src} alt={image.caption} loading="lazy" className="w-full h-full object-cover" />
-          <div className="absolute inset-0 flex items-end p-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          <div className="absolute inset-0 flex items-end p-2.5 sm:p-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85), transparent)' }}>
             <div>
-              <p className="text-white font-poppins text-xs font-medium">{image.caption}</p>
-              <div className="flex items-center gap-1 text-gold text-xs mt-1">
+              <p className="text-white font-poppins text-[11px] sm:text-xs font-medium line-clamp-1">{image.caption}</p>
+              <div className="flex items-center gap-1 text-gold text-[10px] sm:text-xs mt-0.5">
                 <ZoomIn size={11} /><span>View Full</span>
               </div>
             </div>
@@ -163,7 +173,7 @@ export default function Gallery3D() {
   return (
     <section id="gallery" className="section-padding bg-black relative overflow-hidden">
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full opacity-5"
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350px] sm:w-[500px] md:w-[700px] h-[350px] sm:h-[500px] md:h-[700px] rounded-full opacity-5"
           style={{ background: 'radial-gradient(circle, #D4AF37, transparent)', filter: 'blur(120px)' }} />
       </div>
 
@@ -174,22 +184,22 @@ export default function Gallery3D() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="text-center mb-12"
+          className="text-center mb-8 sm:mb-12"
         >
-          <p className="section-tag mb-3">Gallery</p>
+          <p className="section-tag mb-2 sm:mb-3">Gallery</p>
           <h2 className="section-title">
             Our Venue<br />
             <span className="gold-text">Photo Gallery</span>
           </h2>
           <div className="section-divider mx-auto" />
-          <p className="text-white/55 font-poppins text-sm max-w-xl mx-auto mt-4">
+          <p className="text-white/55 font-poppins text-xs sm:text-sm max-w-xl mx-auto mt-3 sm:mt-4 px-2">
             Explore every corner of Lulu Galaxy through our gallery.
             Click any image to view in full size.
           </p>
         </motion.div>
 
-        {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
+        {/* Category Tabs — Horizontally Scrollable on Mobile */}
+        <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-2 sm:pb-0 sm:flex-wrap sm:justify-center mb-8 sm:mb-10 px-1">
           {CATEGORIES.map((cat) => {
             const count = filterImages(cat.id).length
             return (
@@ -197,7 +207,7 @@ export default function Gallery3D() {
                 key={cat.id}
                 id={`gallery-tab-${cat.id}`}
                 onClick={() => setActiveTab(cat.id)}
-                className={`gallery-tab ${activeTab === cat.id ? 'active' : ''}`}
+                className={`gallery-tab flex-shrink-0 min-h-[40px] ${activeTab === cat.id ? 'active' : ''}`}
               >
                 {cat.label}
                 {count > 0 && <span className="ml-1 text-xs opacity-60">({count})</span>}
@@ -220,7 +230,7 @@ export default function Gallery3D() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="text-center mt-12"
+          className="text-center mt-10 sm:mt-12"
         >
           <button
             id="gallery-book-btn"

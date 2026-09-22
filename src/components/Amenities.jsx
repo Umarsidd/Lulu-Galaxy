@@ -44,15 +44,15 @@ export default function Amenities() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7 }}
-          className="text-center mb-16"
+          className="text-center mb-10 sm:mb-16"
         >
-          <p className="section-tag mb-3">Amenities</p>
+          <p className="section-tag mb-2 sm:mb-3">Amenities</p>
           <h2 className="section-title">
             World-Class Facilities<br />
             <span className="gold-text">At Your Service</span>
           </h2>
           <div className="section-divider mx-auto" />
-          <p className="text-white/55 font-poppins text-sm max-w-xl mx-auto mt-4">
+          <p className="text-white/55 font-poppins text-xs sm:text-sm max-w-xl mx-auto mt-3 sm:mt-4 px-2">
             Every amenity thoughtfully designed to ensure your guests experience the pinnacle of comfort and luxury.
           </p>
         </motion.div>
@@ -61,17 +61,17 @@ export default function Amenities() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5 sm:gap-4"
         >
           {amenities.map((amenity) => (
             <motion.div key={amenity.title} variants={itemVariants} className="amenity-card group">
               <div className="text-gold group-hover:scale-125 transition-transform duration-300">
                 {amenity.icon}
               </div>
-              <h3 className="font-poppins font-semibold text-white text-xs text-center leading-tight">
+              <h3 className="font-poppins font-semibold text-white text-[11px] sm:text-xs text-center leading-tight">
                 {amenity.title}
               </h3>
-              <p className="font-poppins text-white/40 text-xs text-center leading-relaxed hidden lg:block">
+              <p className="font-poppins text-white/40 text-[10px] sm:text-xs text-center leading-relaxed hidden lg:block">
                 {amenity.desc}
               </p>
             </motion.div>
@@ -82,18 +82,18 @@ export default function Amenities() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="mt-16 glass-card-dark p-8 text-center"
+          className="mt-12 sm:mt-16 glass-card-dark p-4 sm:p-8 text-center"
         >
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
             {[
               { val: '2000–2500', label: 'Guest Capacity' },
               { val: 'Indoor + Outdoor', label: 'Venue Options' },
               { val: 'Fully AC', label: 'Climate Controlled' },
               { val: '24×7', label: 'Backup Power' },
             ].map((item) => (
-              <div key={item.label} className="text-center">
-                <div className="font-playfair text-gold font-bold text-lg md:text-xl">{item.val}</div>
-                <div className="font-poppins text-white/50 text-xs mt-1">{item.label}</div>
+              <div key={item.label} className="text-center p-1 sm:p-2">
+                <div className="font-playfair text-gold font-bold text-base sm:text-lg md:text-xl">{item.val}</div>
+                <div className="font-poppins text-white/50 text-[11px] sm:text-xs mt-1">{item.label}</div>
               </div>
             ))}
           </div>

@@ -82,13 +82,17 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 20 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="glass-card-dark p-4 text-center mb-12 text-gold font-poppins text-sm"
+          className="glass-card-dark p-3.5 sm:p-4 text-center mb-8 sm:mb-12 text-gold font-poppins text-xs sm:text-sm flex flex-wrap items-center justify-center gap-2 sm:gap-4 leading-relaxed"
         >
-          Seasonal offers available &nbsp;|&nbsp; Premium decoration, DJ, catering & photography available as add-ons &nbsp;|&nbsp; Advance booking required
+          <span>✨ Seasonal offers available</span>
+          <span className="hidden sm:inline text-gold/40">|</span>
+          <span>👑 Decoration, DJ, catering & photography add-ons</span>
+          <span className="hidden sm:inline text-gold/40">|</span>
+          <span>📅 Advance booking required</span>
         </motion.div>
 
         {/* Package Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 sm:mb-16">
           {packages.map((pkg, i) => (
             <motion.div
               key={pkg.name}
@@ -105,29 +109,29 @@ export default function Pricing() {
               )}
 
               <div className="flex justify-center mb-4">{pkg.icon}</div>
-              <h3 className="font-playfair text-white text-xl font-bold mb-2">{pkg.name}</h3>
-              <p className="font-poppins text-white/50 text-sm mb-6 leading-relaxed">{pkg.desc}</p>
+              <h3 className="font-playfair text-white text-lg sm:text-xl font-bold mb-2">{pkg.name}</h3>
+              <p className="font-poppins text-white/50 text-xs sm:text-sm mb-6 leading-relaxed">{pkg.desc}</p>
 
-              <div className="space-y-3 mb-8 text-left">
+              <div className="space-y-2.5 sm:space-y-3 mb-8 text-left">
                 {pkg.features.map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
+                  <div key={feature} className="flex items-center gap-2.5 sm:gap-3">
                     <div className="w-5 h-5 rounded-full bg-gold/20 border border-gold/40 flex items-center justify-center flex-shrink-0">
                       <Check size={10} className="text-gold" />
                     </div>
-                    <span className="font-poppins text-white/70 text-sm">{feature}</span>
+                    <span className="font-poppins text-white/70 text-xs sm:text-sm">{feature}</span>
                   </div>
                 ))}
               </div>
 
               <div className="text-center">
-                <p className="text-gold font-playfair text-2xl font-bold mb-1">Custom Quote</p>
+                <p className="text-gold font-playfair text-xl sm:text-2xl font-bold mb-1">Custom Quote</p>
                 <p className="text-white/40 font-poppins text-xs mb-4">Price based on requirements</p>
                 <a
                   id={`pricing-cta-${pkg.name.toLowerCase().replace(/\s+/g, '-')}`}
                   href="https://wa.me/918707408916?text=Hello! I am interested in getting a quote for my event."
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`${pkg.highlight ? 'btn-gold' : 'btn-outline-gold'} w-full justify-center`}
+                  className={`${pkg.highlight ? 'btn-gold' : 'btn-outline-gold'} w-full justify-center text-sm py-3.5`}
                   style={{ display: 'flex' }}
                 >
                   Get Custom Quote
@@ -142,11 +146,11 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.7, delay: 0.5 }}
-          className="glass-card-dark p-8"
+          className="glass-card-dark p-5 sm:p-8"
         >
-          <div className="grid md:grid-cols-2 gap-8 items-center">
+          <div className="grid md:grid-cols-2 gap-6 sm:gap-8 items-center">
             <div>
-              <h3 className="font-playfair text-white text-xl mb-4">Additional Services Available</h3>
+              <h3 className="font-playfair text-white text-lg sm:text-xl mb-4">Additional Services Available</h3>
               <div className="space-y-2">
                 {[
                   'Premium floral & thematic decorations',
@@ -156,26 +160,26 @@ export default function Pricing() {
                   'Additional seating arrangements',
                   'Guest accommodation (AC & Non-AC rooms)',
                 ].map((item) => (
-                  <div key={item} className="flex items-center gap-2 text-white/60 font-poppins text-sm">
+                  <div key={item} className="flex items-center gap-2 text-white/60 font-poppins text-xs sm:text-sm">
                     <Check size={12} className="text-gold flex-shrink-0" />
                     {item}
                   </div>
                 ))}
               </div>
             </div>
-            <div className="text-center space-y-4">
-              <p className="font-playfair text-white text-lg italic">
+            <div className="text-center space-y-4 mt-4 md:mt-0">
+              <p className="font-playfair text-white text-base sm:text-lg italic">
                 "Ready to plan your dream event?"
               </p>
-              <p className="text-white/50 font-poppins text-sm">
+              <p className="text-white/50 font-poppins text-xs sm:text-sm max-w-sm mx-auto">
                 Call or WhatsApp us to discuss your requirements and get a personalized package.
               </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a id="pricing-call-btn" href="tel:8707408916" className="btn-gold">
+              <div className="flex flex-col sm:flex-row gap-3 justify-center w-full max-w-xs sm:max-w-none mx-auto">
+                <a id="pricing-call-btn" href="tel:8707408916" className="btn-gold justify-center">
                   <Phone size={16} /> Call Now
                 </a>
                 <a id="pricing-whatsapp-btn" href="https://wa.me/918707408916"
-                  target="_blank" rel="noopener noreferrer" className="btn-outline-gold">
+                  target="_blank" rel="noopener noreferrer" className="btn-outline-gold justify-center">
                   <MessageCircle size={16} /> WhatsApp
                 </a>
               </div>

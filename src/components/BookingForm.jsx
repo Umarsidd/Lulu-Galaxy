@@ -58,58 +58,58 @@ export default function BookingForm() {
       </div>
 
       <div className="container-custom relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
 
           {/* Left — Info */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <p className="section-tag mb-3">Book Now</p>
-            <h2 className="section-title mb-6">
+            <p className="section-tag mb-2 sm:mb-3">Book Now</p>
+            <h2 className="section-title mb-4 sm:mb-6">
               Reserve Your<br />
               <span className="gold-text">Special Date</span>
             </h2>
             <div className="section-divider" />
-            <p className="text-white/55 font-poppins text-sm mt-6 leading-relaxed mb-8">
+            <p className="text-white/55 font-poppins text-xs sm:text-sm mt-4 sm:mt-6 leading-relaxed mb-6 sm:mb-8">
               Fill out the inquiry form and our event specialist will contact you within 24 hours
               to discuss your requirements and create the perfect celebration package.
             </p>
 
             {/* Quick contact links */}
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               <a href="tel:8707408916" id="booking-call-link"
-                className="flex items-center gap-4 glass-card-dark p-4 hover:border-gold/50 transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Phone size={22} className="text-gold" />
+                className="flex items-center gap-3.5 sm:gap-4 glass-card-dark p-3.5 sm:p-4 hover:border-gold/50 transition-all duration-300 group">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                  <Phone size={20} className="text-gold" />
                 </div>
-                <div>
-                  <p className="text-white font-poppins font-semibold text-sm">Call / Click to Call</p>
-                  <p className="text-gold font-poppins text-base font-bold">+91 8707408916</p>
+                <div className="min-w-0">
+                  <p className="text-white font-poppins font-semibold text-xs sm:text-sm">Call / Click to Call</p>
+                  <p className="text-gold font-poppins text-sm sm:text-base font-bold">+91 8707408916</p>
                 </div>
               </a>
 
               <a href="https://wa.me/918707408916" target="_blank" rel="noopener noreferrer"
                 id="booking-whatsapp-link"
-                className="flex items-center gap-4 glass-card-dark p-4 hover:border-gold/50 transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-[#25D366]/20 border border-[#25D366]/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <MessageCircle size={22} className="text-[#25D366]" />
+                className="flex items-center gap-3.5 sm:gap-4 glass-card-dark p-3.5 sm:p-4 hover:border-gold/50 transition-all duration-300 group">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-[#25D366]/20 border border-[#25D366]/30 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                  <MessageCircle size={20} className="text-[#25D366]" />
                 </div>
-                <div>
-                  <p className="text-white font-poppins font-semibold text-sm">WhatsApp Chat</p>
-                  <p className="text-[#25D366] font-poppins text-base font-bold">wa.me/918707408916</p>
+                <div className="min-w-0">
+                  <p className="text-white font-poppins font-semibold text-xs sm:text-sm">WhatsApp Chat</p>
+                  <p className="text-[#25D366] font-poppins text-sm sm:text-base font-bold">wa.me/918707408916</p>
                 </div>
               </a>
 
               <a href="mailto:ayazk56780@gmail.com" id="booking-email-link"
-                className="flex items-center gap-4 glass-card-dark p-4 hover:border-gold/50 transition-all duration-300 group">
-                <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <Mail size={22} className="text-gold" />
+                className="flex items-center gap-3.5 sm:gap-4 glass-card-dark p-3.5 sm:p-4 hover:border-gold/50 transition-all duration-300 group">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0">
+                  <Mail size={20} className="text-gold" />
                 </div>
-                <div>
-                  <p className="text-white font-poppins font-semibold text-sm">Email Us</p>
-                  <p className="text-gold font-poppins text-sm">ayazk56780@gmail.com</p>
+                <div className="min-w-0">
+                  <p className="text-white font-poppins font-semibold text-xs sm:text-sm">Email Us</p>
+                  <p className="text-gold font-poppins text-xs sm:text-sm break-all">ayazk56780@gmail.com</p>
                 </div>
               </a>
             </div>
@@ -117,25 +117,25 @@ export default function BookingForm() {
 
           {/* Right — Form */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <div className="glass-card-dark p-8">
-              <h3 className="font-playfair text-white text-2xl mb-6">Inquiry Form</h3>
+            <div className="glass-card-dark p-4 sm:p-6 md:p-8">
+              <h3 className="font-playfair text-white text-xl sm:text-2xl mb-4 sm:mb-6">Inquiry Form</h3>
 
               {status === 'success' ? (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="text-center py-12"
+                  className="text-center py-8 sm:py-12"
                 >
-                  <div className="w-20 h-20 rounded-full bg-gold/20 border-2 border-gold flex items-center justify-center mx-auto mb-6"
+                  <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-gold/20 border-2 border-gold flex items-center justify-center mx-auto mb-4 sm:mb-6"
                     style={{ boxShadow: '0 0 40px rgba(212,175,55,0.4)' }}>
-                    <CheckCircle size={40} className="text-gold" />
+                    <CheckCircle size={36} className="text-gold" />
                   </div>
-                  <h4 className="font-playfair text-white text-2xl mb-3">Thank You!</h4>
-                  <p className="text-white/60 font-poppins text-sm mb-6">
+                  <h4 className="font-playfair text-white text-xl sm:text-2xl mb-2 sm:mb-3">Thank You!</h4>
+                  <p className="text-white/60 font-poppins text-xs sm:text-sm mb-6">
                     Your inquiry has been received. Our team will contact you within 24 hours.
                   </p>
                   <button onClick={() => setStatus('idle')} className="btn-outline-gold">
@@ -143,29 +143,29 @@ export default function BookingForm() {
                   </button>
                 </motion.div>
               ) : (
-                <form ref={formRef} onSubmit={handleSubmit} className="space-y-4">
+                <form ref={formRef} onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
                   <input type="hidden" name="to_email" value="ayazk56780@gmail.com" />
 
                   <div>
-                    <label className="block text-white/60 font-poppins text-xs mb-2 uppercase tracking-wider">Full Name *</label>
+                    <label className="block text-white/60 font-poppins text-xs mb-1.5 sm:mb-2 uppercase tracking-wider">Full Name *</label>
                     <input id="form-name" type="text" name="name" value={form.name} onChange={handleChange}
                       required placeholder="Enter your full name" className="form-input" />
                   </div>
 
                   <div>
-                    <label className="block text-white/60 font-poppins text-xs mb-2 uppercase tracking-wider">Phone Number *</label>
+                    <label className="block text-white/60 font-poppins text-xs mb-1.5 sm:mb-2 uppercase tracking-wider">Phone Number *</label>
                     <input id="form-phone" type="tel" name="phone" value={form.phone} onChange={handleChange}
                       required placeholder="Enter your phone number" className="form-input" />
                   </div>
 
-                  <div className="grid sm:grid-cols-2 gap-4">
-                    <div>
-                      <label className="block text-white/60 font-poppins text-xs mb-2 uppercase tracking-wider">Event Date *</label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                    <div className="min-w-0">
+                      <label className="block text-white/60 font-poppins text-xs mb-1.5 sm:mb-2 uppercase tracking-wider">Event Date *</label>
                       <input id="form-event-date" type="date" name="event_date" value={form.event_date}
                         onChange={handleChange} required className="form-input" style={{ colorScheme: 'dark' }} />
                     </div>
-                    <div>
-                      <label className="block text-white/60 font-poppins text-xs mb-2 uppercase tracking-wider">Event Type *</label>
+                    <div className="min-w-0">
+                      <label className="block text-white/60 font-poppins text-xs mb-1.5 sm:mb-2 uppercase tracking-wider">Event Type *</label>
                       <select id="form-event-type" name="event_type" value={form.event_type}
                         onChange={handleChange} required className="form-input" style={{ colorScheme: 'dark' }}>
                         <option value="" disabled>Select event type</option>
@@ -175,7 +175,7 @@ export default function BookingForm() {
                   </div>
 
                   <div>
-                    <label className="block text-white/60 font-poppins text-xs mb-2 uppercase tracking-wider">Expected Guest Count *</label>
+                    <label className="block text-white/60 font-poppins text-xs mb-1.5 sm:mb-2 uppercase tracking-wider">Expected Guest Count *</label>
                     <input id="form-guest-count" type="number" name="guest_count" value={form.guest_count}
                       onChange={handleChange} required placeholder="e.g. 500" min="1" max="2500" className="form-input" />
                   </div>

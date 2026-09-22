@@ -125,38 +125,40 @@ export default function Testimonials() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                initial={{ opacity: 0, x: 60 }}
+                initial={{ opacity: 0, x: 40 }}
                 animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -60 }}
-                transition={{ duration: 0.4 }}
-                className="testimonial-card relative"
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.35 }}
+                className="testimonial-card relative overflow-hidden"
               >
-                {/* Quote mark */}
-                <div className="absolute top-4 right-6 font-playfair text-8xl text-gold/10 leading-none select-none">
+                {/* Quote mark watermark */}
+                <div className="absolute top-2 sm:top-4 right-4 sm:right-6 font-playfair text-6xl sm:text-8xl text-gold/10 leading-none select-none pointer-events-none">
                   "
                 </div>
 
-                <div className="flex flex-col md:flex-row gap-6 items-start">
+                <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-center sm:items-start text-center sm:text-left">
                   {/* Avatar */}
                   <div className="flex-shrink-0">
                     <img
                       src={t.avatar}
                       alt={t.name}
-                      className="w-20 h-20 rounded-full border-2 border-gold/50 object-cover"
+                      className="w-16 h-16 sm:w-20 sm:h-20 rounded-full border-2 border-gold/50 object-cover"
                       style={{ boxShadow: '0 0 20px rgba(212,175,55,0.3)' }}
                     />
                   </div>
 
                   {/* Content */}
-                  <div className="flex-1">
-                    <StarRating rating={t.rating} />
-                    <p className="font-poppins text-white/80 text-base leading-relaxed mt-4 mb-6 italic">
+                  <div className="flex-1 w-full">
+                    <div className="flex justify-center sm:justify-start">
+                      <StarRating rating={t.rating} />
+                    </div>
+                    <p className="font-poppins text-white/80 text-sm sm:text-base leading-relaxed mt-3 sm:mt-4 mb-4 sm:mb-6 italic">
                       "{t.review}"
                     </p>
-                    <div className="flex items-center justify-between">
+                    <div className="flex flex-col sm:flex-row items-center justify-between gap-1 sm:gap-2">
                       <div>
-                        <p className="font-playfair text-white font-bold text-lg">{t.name}</p>
-                        <p className="font-poppins text-gold text-sm">{t.event} • {t.date}</p>
+                        <p className="font-playfair text-white font-bold text-base sm:text-lg">{t.name}</p>
+                        <p className="font-poppins text-gold text-xs sm:text-sm">{t.event} • {t.date}</p>
                       </div>
                     </div>
                   </div>
@@ -165,51 +167,56 @@ export default function Testimonials() {
             </AnimatePresence>
 
             {/* Navigation Arrows */}
-            <div className="flex items-center justify-between mt-8">
+            <div className="flex items-center justify-between mt-6 sm:mt-8 px-2 sm:px-0">
               <button
                 id="testimonial-prev-btn"
                 onClick={() => go(-1)}
-                className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center text-white hover:border-gold hover:text-gold transition-all duration-300"
+                className="w-11 h-11 rounded-full border border-gold/30 flex items-center justify-center text-white hover:border-gold hover:text-gold transition-all duration-300 active:scale-95"
+                aria-label="Previous testimonial"
               >
                 <ChevronLeft size={20} />
               </button>
 
               {/* Dots */}
-              <div className="flex gap-2">
+              <div className="flex gap-1.5 items-center">
                 {testimonials.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => { setAuto(false); setCurrent(i) }}
-                    className={`rounded-full transition-all duration-300 ${
-                      i === current ? 'w-8 h-2 bg-gold' : 'w-2 h-2 bg-white/20'
-                    }`}
-                  />
+                    className="p-1.5 focus:outline-none"
+                    aria-label={`Go to testimonial ${i + 1}`}
+                  >
+                    <span className={`block rounded-full transition-all duration-300 ${
+                      i === current ? 'w-6 sm:w-8 h-2 bg-gold' : 'w-2 h-2 bg-white/20 hover:bg-white/40'
+                    }`} />
+                  </button>
                 ))}
               </div>
 
               <button
                 id="testimonial-next-btn"
                 onClick={() => go(1)}
-                className="w-12 h-12 rounded-full border border-gold/30 flex items-center justify-center text-white hover:border-gold hover:text-gold transition-all duration-300"
+                className="w-11 h-11 rounded-full border border-gold/30 flex items-center justify-center text-white hover:border-gold hover:text-gold transition-all duration-300 active:scale-95"
+                aria-label="Next testimonial"
               >
                 <ChevronRight size={20} />
               </button>
             </div>
           </div>
 
-          {/* Mini Cards Row */}
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-3 mt-10">
+          {/* Mini Cards Row — Horizontally Scrollable on Mobile */}
+          <div className="flex overflow-x-auto no-scrollbar gap-2.5 pb-2 md:grid md:grid-cols-5 md:gap-3 mt-8 sm:mt-10 px-1">
             {testimonials.map((test, i) => (
               <button
                 key={test.id}
                 onClick={() => { setAuto(false); setCurrent(i) }}
-                className={`p-3 rounded-xl border transition-all duration-300 text-left ${
+                className={`flex-shrink-0 w-28 md:w-auto p-2.5 sm:p-3 rounded-xl border transition-all duration-300 text-left ${
                   i === current
                     ? 'border-gold/60 bg-gold/10'
                     : 'border-white/10 bg-white/5 hover:border-gold/30'
                 }`}
               >
-                <img src={test.avatar} alt={test.name} className="w-10 h-10 rounded-full mb-2" />
+                <img src={test.avatar} alt={test.name} className="w-8 h-8 sm:w-10 sm:h-10 rounded-full mb-1.5 sm:mb-2 object-cover" />
                 <p className="text-white/70 font-poppins text-xs leading-tight truncate">{test.name.split(' ')[0]}</p>
                 <div className="flex gap-0.5 mt-1">
                   {[...Array(test.rating)].map((_, s) => (

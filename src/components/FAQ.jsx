@@ -61,13 +61,13 @@ function FAQItem({ faq }) {
       <button
         id={faq.id}
         onClick={() => setOpen(!open)}
-        className="w-full flex items-center justify-between p-5 md:p-6 text-left"
+        className="w-full flex items-center justify-between p-4 sm:p-5 md:p-6 text-left min-h-[52px]"
         aria-expanded={open}
       >
-        <h3 className="font-poppins font-semibold text-white text-sm md:text-base pr-4">
+        <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm md:text-base pr-3 sm:pr-4 leading-snug">
           {faq.question}
         </h3>
-        <div className={`flex-shrink-0 w-8 h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
+        <div className={`flex-shrink-0 w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center transition-all duration-300 ${
           open ? 'border-gold bg-gold/20 rotate-180' : 'border-white/20'
         }`}>
           <ChevronDown size={16} className={open ? 'text-gold' : 'text-white/50'} />
@@ -83,8 +83,8 @@ function FAQItem({ faq }) {
             transition={{ duration: 0.3 }}
             style={{ overflow: 'hidden' }}
           >
-            <div className="px-5 md:px-6 pb-5 md:pb-6 border-t border-gold/10">
-              <p className="font-poppins text-white/60 text-sm leading-relaxed pt-4">
+            <div className="px-4 sm:px-5 md:px-6 pb-4 sm:pb-5 md:pb-6 border-t border-gold/10">
+              <p className="font-poppins text-white/60 text-xs sm:text-sm leading-relaxed pt-3 sm:pt-4">
                 {faq.answer}
               </p>
             </div>
@@ -101,31 +101,31 @@ export default function FAQ() {
 
   return (
     <section id="faq" className="section-padding bg-black-soft relative overflow-hidden">
-      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 opacity-10 pointer-events-none"
+      <div className="absolute right-0 top-1/2 -translate-y-1/2 w-48 sm:w-64 h-48 sm:h-64 opacity-10 pointer-events-none"
         style={{ background: 'radial-gradient(circle, #D4AF37, transparent)', filter: 'blur(60px)' }} />
 
       <div className="container-custom relative z-10" ref={ref}>
-        <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-start">
           {/* Left: Heading */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
           >
-            <p className="section-tag mb-3">FAQs</p>
-            <h2 className="section-title mb-6">
+            <p className="section-tag mb-2 sm:mb-3">FAQs</p>
+            <h2 className="section-title mb-4 sm:mb-6">
               Frequently<br />
               <span className="gold-text">Asked Questions</span>
             </h2>
             <div className="section-divider" />
-            <p className="text-white/55 font-poppins text-sm mt-6 leading-relaxed">
+            <p className="text-white/55 font-poppins text-xs sm:text-sm mt-4 sm:mt-6 leading-relaxed">
               Have questions about booking, services, or our venue? We've answered the most common
               queries below. Can't find what you're looking for? Contact us directly!
             </p>
 
-            <div className="mt-8 glass-card-dark p-6">
-              <p className="font-playfair text-white text-lg mb-4">Still have questions?</p>
-              <div className="flex flex-col gap-3">
+            <div className="mt-6 sm:mt-8 glass-card-dark p-4 sm:p-6">
+              <p className="font-playfair text-white text-base sm:text-lg mb-3 sm:mb-4">Still have questions?</p>
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-3">
                 <a
                   id="faq-call-btn"
                   href="tel:8707408916"
@@ -148,10 +148,10 @@ export default function FAQ() {
 
           {/* Right: FAQ Accordion */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="space-y-3"
+            className="space-y-2.5 sm:space-y-3"
           >
             {faqs.map((faq) => (
               <FAQItem key={faq.id} faq={faq} />

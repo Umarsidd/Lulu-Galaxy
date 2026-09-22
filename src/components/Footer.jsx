@@ -25,8 +25,8 @@ export default function Footer() {
       {/* Top decoration */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-gold/50 to-transparent" />
 
-      <div className="container-custom py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+      <div className="container-custom py-12 sm:py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
           {/* Brand Column */}
           <div className="lg:col-span-2">
             {/* Logo */}
@@ -37,13 +37,13 @@ export default function Footer() {
               </div>
               <div>
                 <div className="font-playfair text-white font-bold text-xl leading-none">Lulu Galaxy</div>
-                <div className="text-gold text-xs font-poppins tracking-widest">BANQUET HALL & HOTEL</div>
+                <div className="text-gold text-xs font-poppins tracking-widest">BANQUET HALL &amp; HOTEL</div>
               </div>
             </div>
 
             <p className="font-poppins text-white/55 text-sm leading-relaxed mb-6 max-w-sm">
               Balrampur's most elegant event destination. We make your celebrations unforgettable 
-              with our premium indoor & outdoor spaces, world-class amenities, and dedicated team.
+              with our premium indoor &amp; outdoor spaces, world-class amenities, and dedicated team.
             </p>
 
             <blockquote className="font-playfair italic text-gold text-base border-l-2 border-gold/40 pl-4 mb-6">
@@ -51,13 +51,13 @@ export default function Footer() {
             </blockquote>
 
             {/* Social Links */}
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-3">
               <a
                 id="footer-instagram-venue"
                 href="https://www.instagram.com/lulu_galaxy_banquet"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
+                className="social-icon min-w-[44px] min-h-[44px]"
                 aria-label="Instagram - Lulu Galaxy Banquet"
               >
                 <FaInstagram size={18} />
@@ -67,7 +67,7 @@ export default function Footer() {
                 href="https://www.instagram.com/Ayazkhan__04"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
+                className="social-icon min-w-[44px] min-h-[44px]"
                 aria-label="Instagram - Ayaz Khan"
               >
                 <FaInstagram size={18} />
@@ -77,7 +77,7 @@ export default function Footer() {
                 href="https://wa.me/918707408916"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="social-icon"
+                className="social-icon min-w-[44px] min-h-[44px]"
                 aria-label="WhatsApp"
               >
                 <FaWhatsapp size={18} />
@@ -85,7 +85,7 @@ export default function Footer() {
               {/* YouTube - Coming Soon, disabled */}
               <div
                 id="footer-youtube-placeholder"
-                className="social-icon opacity-30 cursor-not-allowed"
+                className="social-icon min-w-[44px] min-h-[44px] opacity-30 cursor-not-allowed"
                 title="YouTube coming soon"
                 aria-label="YouTube - Coming Soon"
               >
@@ -100,16 +100,16 @@ export default function Footer() {
               Quick Links
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold rounded-full" />
             </h3>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 sm:grid-cols-1 gap-y-3 gap-x-2">
               {navLinks.map((link) => (
                 <li key={link.href}>
                   <a
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); handleNavClick(link.href) }}
-                    className="footer-link flex items-center gap-2 group"
+                    className="footer-link flex items-center gap-2 group min-h-[36px]"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-gold/0 group-hover:bg-gold transition-all duration-300" />
-                    {link.label}
+                    <span className="w-1.5 h-1.5 rounded-full bg-gold/0 group-hover:bg-gold transition-all duration-300 flex-shrink-0" />
+                    <span className="text-xs sm:text-sm">{link.label}</span>
                   </a>
                 </li>
               ))}
@@ -125,17 +125,17 @@ export default function Footer() {
             <div className="space-y-4">
               <div className="flex gap-3">
                 <MapPin size={16} className="text-gold flex-shrink-0 mt-0.5" />
-                <p className="text-white/55 font-poppins text-sm leading-relaxed">
+                <p className="text-white/55 font-poppins text-xs sm:text-sm leading-relaxed">
                   Gas Godown Road, Dharampur, Near Fire Station, Balrampur, UP
                 </p>
               </div>
               <a href="tel:8707408916" id="footer-phone" className="flex gap-3 items-center footer-link">
                 <Phone size={16} className="text-gold flex-shrink-0" />
-                <span className="text-gold font-semibold">+91 8707408916</span>
+                <span className="text-gold font-semibold text-xs sm:text-sm">+91 8707408916</span>
               </a>
-              <a href="mailto:ayazk56780@gmail.com" id="footer-email" className="flex gap-3 items-center footer-link">
+              <a href="mailto:ayazk56780@gmail.com" id="footer-email" className="flex gap-3 items-center footer-link min-w-0">
                 <Mail size={16} className="text-gold flex-shrink-0" />
-                <span>ayazk56780@gmail.com</span>
+                <span className="break-all text-xs sm:text-sm">ayazk56780@gmail.com</span>
               </a>
             </div>
 
@@ -157,13 +157,16 @@ export default function Footer() {
 
       {/* Bottom Bar */}
       <div className="border-t border-gold/10">
-        <div className="container-custom py-5">
+        <div
+          className="container-custom py-5"
+          style={{ paddingBottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
+        >
           <div className="flex flex-col md:flex-row items-center justify-between gap-3">
             <p className="font-poppins text-white/40 text-xs text-center md:text-left">
-              © 2025 Lulu Galaxy Banquet Hall & Hotel. All Rights Reserved.
+              © 2025 Lulu Galaxy Banquet Hall &amp; Hotel. All Rights Reserved.
             </p>
             <p className="font-poppins text-white/30 text-xs">
-              Designed with ♥ for Balrampur | 
+              Designed with ♥ for Balrampur |{' '}
               <a href="https://lulugalaxybanquet.com" className="text-gold/50 hover:text-gold ml-1 transition-colors">
                 lulugalaxybanquet.com
               </a>

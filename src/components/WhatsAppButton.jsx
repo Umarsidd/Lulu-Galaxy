@@ -9,7 +9,10 @@ export default function WhatsAppButton() {
   return (
     <>
       {/* WhatsApp FAB */}
-      <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-3">
+      <div
+        className="fixed right-3 sm:right-6 z-50 flex flex-col items-end gap-3"
+        style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
+      >
         {/* Tooltip */}
         <AnimatePresence>
           {showTooltip && (
@@ -44,11 +47,14 @@ export default function WhatsAppButton() {
       </div>
 
       {/* Fixed Mobile Call Button (mobile only) */}
-      <div className="fixed bottom-6 left-6 z-50 md:hidden">
+      <div
+        className="fixed left-3 sm:left-6 z-50 md:hidden"
+        style={{ bottom: 'calc(1.5rem + env(safe-area-inset-bottom, 0px))' }}
+      >
         <a
           id="mobile-call-btn"
           href="tel:8707408916"
-          className="flex items-center gap-2 px-5 py-3.5 rounded-full font-poppins font-semibold text-sm text-white"
+          className="flex items-center gap-1.5 px-3 sm:px-5 py-3.5 rounded-full font-poppins font-semibold text-xs sm:text-sm text-white min-h-[44px]"
           style={{
             background: 'linear-gradient(135deg, #D4AF37, #F0D060)',
             color: '#111',

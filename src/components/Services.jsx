@@ -67,15 +67,15 @@ export default function Services() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4"
+          className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-2.5 sm:gap-4"
         >
           {services.map((service) => (
-            <motion.div key={service.title} variants={cardVariants} className="service-card">
+            <motion.div key={service.title} variants={cardVariants} className="service-card flex flex-col items-center justify-center">
               <div className="icon-wrap text-gold">
                 {service.icon}
               </div>
-              <h3 className="font-poppins font-semibold text-white text-sm mb-2">{service.title}</h3>
-              <p className="font-poppins text-white/45 text-xs leading-relaxed hidden md:block">{service.desc}</p>
+              <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2 leading-snug">{service.title}</h3>
+              <p className="font-poppins text-white/45 text-[11px] sm:text-xs leading-relaxed hidden md:block">{service.desc}</p>
             </motion.div>
           ))}
         </motion.div>

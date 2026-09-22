@@ -29,13 +29,13 @@ export default function LocationContact() {
           <div className="section-divider mx-auto" />
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12">
           {/* Left: Map + Contact Info */}
           <motion.div
-            initial={{ opacity: 0, x: -40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
             {/* Google Map Embed */}
             <div className="rounded-2xl overflow-hidden gold-border"
@@ -44,7 +44,7 @@ export default function LocationContact() {
                 title="Lulu Galaxy Banquet Hall Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3569.8065498395!2d82.1659!3d27.4305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDI1JzQ5LjgiTiA4MsKwMDknNTcuMiJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
                 width="100%"
-                height="320"
+                height="280"
                 style={{ border: 0, filter: 'invert(0.9) hue-rotate(180deg)' }}
                 allowFullScreen=""
                 loading="lazy"
@@ -58,7 +58,7 @@ export default function LocationContact() {
               href="https://www.google.com/maps/search/Gas+Godown+Road+Dharampur+Near+Fire+Station+Balrampur+Uttar+Pradesh"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline-gold w-full justify-center"
+              className="btn-outline-gold w-full justify-center text-sm py-3.5"
               style={{ display: 'flex' }}
             >
               <ExternalLink size={16} />
@@ -68,20 +68,20 @@ export default function LocationContact() {
 
           {/* Right: Contact Details */}
           <motion.div
-            initial={{ opacity: 0, x: 40 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 30 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.7 }}
-            className="space-y-6"
+            className="space-y-4 sm:space-y-6"
           >
             {/* Address */}
-            <div className="glass-card-dark p-6">
-              <div className="flex gap-4">
-                <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0">
-                  <MapPin className="text-gold" size={22} />
+            <div className="glass-card-dark p-4 sm:p-6">
+              <div className="flex gap-3.5 sm:gap-4">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                  <MapPin className="text-gold" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-white text-sm mb-2">Address</h3>
-                  <p className="font-poppins text-white/60 text-sm leading-relaxed">
+                  <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2">Address</h3>
+                  <p className="font-poppins text-white/60 text-xs sm:text-sm leading-relaxed">
                     Gas Godown Road, Dharampur,<br />
                     Near Fire Station,<br />
                     Balrampur, Uttar Pradesh
@@ -94,15 +94,15 @@ export default function LocationContact() {
             <a
               id="contact-call-btn"
               href="tel:8707408916"
-              className="glass-card-dark p-6 flex gap-4 hover:border-gold/50 transition-all duration-300 group block"
+              className="glass-card-dark p-4 sm:p-6 flex gap-3.5 sm:gap-4 hover:border-gold/50 transition-all duration-300 group block"
             >
-              <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <Phone className="text-gold" size={22} />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Phone className="text-gold" size={20} />
               </div>
               <div>
-                <h3 className="font-poppins font-semibold text-white text-sm mb-2">Phone / WhatsApp</h3>
-                <p className="font-playfair text-gold text-xl font-bold">+91 8707408916</p>
-                <p className="font-poppins text-white/40 text-xs mt-1">Click to call</p>
+                <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2">Phone / WhatsApp</h3>
+                <p className="font-playfair text-gold text-lg sm:text-xl font-bold">+91 8707408916</p>
+                <p className="font-poppins text-white/40 text-[11px] sm:text-xs mt-0.5">Click to call</p>
               </div>
             </a>
 
@@ -110,29 +110,29 @@ export default function LocationContact() {
             <a
               id="contact-email-btn"
               href="mailto:ayazk56780@gmail.com"
-              className="glass-card-dark p-6 flex gap-4 hover:border-gold/50 transition-all duration-300 group block"
+              className="glass-card-dark p-4 sm:p-6 flex gap-3.5 sm:gap-4 hover:border-gold/50 transition-all duration-300 group block"
             >
-              <div className="w-12 h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
-                <Mail className="text-gold" size={22} />
+              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
+                <Mail className="text-gold" size={20} />
               </div>
-              <div>
-                <h3 className="font-poppins font-semibold text-white text-sm mb-2">Email</h3>
-                <p className="font-poppins text-gold text-base">ayazk56780@gmail.com</p>
+              <div className="min-w-0">
+                <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2">Email</h3>
+                <p className="font-poppins text-gold text-xs sm:text-base break-all">ayazk56780@gmail.com</p>
               </div>
             </a>
 
-            {/* Social Media */}
-            <div className="glass-card-dark p-6">
-              <h3 className="font-poppins font-semibold text-white text-sm mb-4">Follow Us</h3>
-              <div className="flex gap-3">
+            {/* Social Media — Fully Responsive Flex Wrap to prevent mobile overflow */}
+            <div className="glass-card-dark p-4 sm:p-6">
+              <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-3 sm:mb-4">Follow Us</h3>
+              <div className="flex flex-wrap gap-2.5 sm:gap-3">
                 <a
                   id="social-instagram-venue"
                   href="https://www.instagram.com/lulu_galaxy_banquet"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 hover:border-pink-500/50 bg-white/5 hover:bg-pink-500/10 transition-all duration-300 group"
+                  className="flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl border border-white/10 hover:border-pink-500/50 bg-white/5 hover:bg-pink-500/10 transition-all duration-300 group min-h-[44px]"
                 >
-                  <FaInstagram className="text-pink-400" size={18} />
+                  <FaInstagram className="text-pink-400 flex-shrink-0" size={18} />
                   <span className="font-poppins text-white/70 text-xs group-hover:text-white transition-colors">
                     @lulu_galaxy_banquet
                   </span>
@@ -142,9 +142,9 @@ export default function LocationContact() {
                   href="https://www.instagram.com/Ayazkhan__04"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 hover:border-pink-500/50 bg-white/5 hover:bg-pink-500/10 transition-all duration-300 group"
+                  className="flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl border border-white/10 hover:border-pink-500/50 bg-white/5 hover:bg-pink-500/10 transition-all duration-300 group min-h-[44px]"
                 >
-                  <FaInstagram className="text-pink-400" size={18} />
+                  <FaInstagram className="text-pink-400 flex-shrink-0" size={18} />
                   <span className="font-poppins text-white/70 text-xs group-hover:text-white transition-colors">
                     @Ayazkhan__04
                   </span>
@@ -152,27 +152,27 @@ export default function LocationContact() {
                 {/* YouTube — Coming Soon, link disabled */}
                 <div
                   id="social-youtube-placeholder"
-                  className="flex items-center gap-2 px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 opacity-40 cursor-not-allowed"
+                  className="flex items-center gap-2 px-3.5 sm:px-4 py-2.5 rounded-xl border border-white/10 bg-white/5 opacity-40 cursor-not-allowed min-h-[44px]"
                   title="YouTube channel coming soon"
                 >
-                  <FaYoutube className="text-red-400" size={18} />
+                  <FaYoutube className="text-red-400 flex-shrink-0" size={18} />
                   <span className="font-poppins text-white/50 text-xs">Coming Soon</span>
                 </div>
               </div>
             </div>
 
             {/* Business Hours */}
-            <div className="glass-card-dark p-6">
-              <h3 className="font-poppins font-semibold text-white text-sm mb-3">Availability</h3>
+            <div className="glass-card-dark p-4 sm:p-6">
+              <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-3">Availability</h3>
               <div className="space-y-2">
                 {[
                   { day: 'Monday – Sunday', time: 'Open All Days' },
                   { day: 'Inquiries', time: '9:00 AM – 9:00 PM' },
                   { day: 'Events', time: 'As Per Booking' },
                 ].map((item) => (
-                  <div key={item.day} className="flex justify-between">
-                    <span className="font-poppins text-white/50 text-xs">{item.day}</span>
-                    <span className="font-poppins text-gold text-xs font-medium">{item.time}</span>
+                  <div key={item.day} className="flex justify-between items-center text-xs">
+                    <span className="font-poppins text-white/50 text-[11px] sm:text-xs">{item.day}</span>
+                    <span className="font-poppins text-gold text-[11px] sm:text-xs font-medium">{item.time}</span>
                   </div>
                 ))}
               </div>

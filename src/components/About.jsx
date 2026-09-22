@@ -110,47 +110,47 @@ export default function About() {
           variants={containerVariants}
           initial="hidden"
           animate={inView ? 'visible' : 'hidden'}
-          className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-20"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6 mb-12 sm:mb-20"
         >
           {stats.map((stat) => (
             <motion.div
               key={stat.label}
               variants={itemVariants}
-              className="glass-card-dark p-6 text-center group hover:border-gold/50 transition-all duration-300"
+              className="glass-card-dark p-3.5 sm:p-6 text-center group hover:border-gold/50 transition-all duration-300 flex flex-col justify-center"
             >
-              <div className="flex justify-center mb-3 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex justify-center mb-2 sm:mb-3 group-hover:scale-110 transition-transform duration-300">
                 {stat.icon}
               </div>
               <div className="counter-card p-0">
                 <Counter end={stat.end} suffix={stat.suffix} />
-                <p className="text-white/60 font-poppins text-xs mt-2 leading-tight">{stat.label}</p>
+                <p className="text-white/60 font-poppins text-[11px] sm:text-xs mt-1 sm:mt-2 leading-tight">{stat.label}</p>
               </div>
             </motion.div>
           ))}
         </motion.div>
 
         {/* Features + Image */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 items-center">
           {/* Left: Features */}
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={inView ? 'visible' : 'hidden'}
-            className="space-y-5"
+            className="space-y-3.5 sm:space-y-5"
           >
             <motion.div variants={itemVariants}>
-              <h3 className="font-playfair text-2xl text-white mb-6">
+              <h3 className="font-playfair text-xl sm:text-2xl text-white mb-4 sm:mb-6">
                 Why Choose <span className="gold-text">Lulu Galaxy?</span>
               </h3>
             </motion.div>
             {features.map((f) => (
               <motion.div key={f.title} variants={itemVariants} className="feature-badge">
-                <div className="w-12 h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl bg-gold/10 border border-gold/30 flex items-center justify-center flex-shrink-0">
                   {f.icon}
                 </div>
                 <div>
-                  <h4 className="font-poppins font-semibold text-white text-sm mb-1">{f.title}</h4>
-                  <p className="font-poppins text-white/55 text-xs leading-relaxed">{f.desc}</p>
+                  <h4 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-0.5 sm:mb-1">{f.title}</h4>
+                  <p className="font-poppins text-white/55 text-[11px] sm:text-xs leading-relaxed">{f.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -158,41 +158,41 @@ export default function About() {
 
           {/* Right: Visual Card */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            initial={{ opacity: 0, y: 40 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="relative"
+            className="relative mt-4 lg:mt-0"
           >
-            <div className="glass-card-dark p-8 text-center relative overflow-hidden">
+            <div className="glass-card-dark p-5 sm:p-8 text-center relative overflow-hidden">
               {/* Decorative gold corner ornaments */}
-              <div className="absolute top-3 left-3 w-8 h-8 border-l-2 border-t-2 border-gold/50 rounded-tl-lg" />
-              <div className="absolute top-3 right-3 w-8 h-8 border-r-2 border-t-2 border-gold/50 rounded-tr-lg" />
-              <div className="absolute bottom-3 left-3 w-8 h-8 border-l-2 border-b-2 border-gold/50 rounded-bl-lg" />
-              <div className="absolute bottom-3 right-3 w-8 h-8 border-r-2 border-b-2 border-gold/50 rounded-br-lg" />
+              <div className="absolute top-3 left-3 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-t-2 border-gold/50 rounded-tl-lg" />
+              <div className="absolute top-3 right-3 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-t-2 border-gold/50 rounded-tr-lg" />
+              <div className="absolute bottom-3 left-3 w-6 h-6 sm:w-8 sm:h-8 border-l-2 border-b-2 border-gold/50 rounded-bl-lg" />
+              <div className="absolute bottom-3 right-3 w-6 h-6 sm:w-8 sm:h-8 border-r-2 border-b-2 border-gold/50 rounded-br-lg" />
 
               {/* Logo symbol */}
-              <div className="w-24 h-24 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mx-auto mb-6 shadow-lg"
+              <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mx-auto mb-4 sm:mb-6 shadow-lg"
                 style={{ boxShadow: '0 0 40px rgba(212,175,55,0.4)' }}>
-                <span className="font-playfair text-black font-bold text-3xl">LG</span>
+                <span className="font-playfair text-black font-bold text-2xl sm:text-3xl">LG</span>
               </div>
 
-              <h3 className="font-playfair text-white text-2xl mb-2">Lulu Galaxy</h3>
-              <p className="text-gold font-poppins text-sm tracking-widest mb-6">BANQUET HALL & HOTEL</p>
-              <div className="section-divider mx-auto mb-6" />
+              <h3 className="font-playfair text-white text-xl sm:text-2xl mb-1 sm:mb-2">Lulu Galaxy</h3>
+              <p className="text-gold font-poppins text-xs sm:text-sm tracking-widest mb-4 sm:mb-6">BANQUET HALL & HOTEL</p>
+              <div className="section-divider mx-auto mb-4 sm:mb-6" />
 
-              <blockquote className="font-playfair italic text-white/70 text-lg leading-relaxed mb-6">
+              <blockquote className="font-playfair italic text-white/70 text-base sm:text-lg leading-relaxed mb-6">
                 "Where Every Celebration Becomes a Beautiful Memory."
               </blockquote>
 
               <div className="flex justify-center gap-6 text-center">
                 <div>
-                  <div className="text-gold font-playfair text-xl font-bold">2025</div>
-                  <div className="text-white/40 text-xs font-poppins">Established</div>
+                  <div className="text-gold font-playfair text-lg sm:text-xl font-bold">2025</div>
+                  <div className="text-white/40 text-[11px] sm:text-xs font-poppins">Established</div>
                 </div>
                 <div className="w-px bg-gold/20" />
                 <div>
-                  <div className="text-gold font-playfair text-xl font-bold">Balrampur</div>
-                  <div className="text-white/40 text-xs font-poppins">Uttar Pradesh</div>
+                  <div className="text-gold font-playfair text-lg sm:text-xl font-bold">Balrampur</div>
+                  <div className="text-white/40 text-[11px] sm:text-xs font-poppins">Uttar Pradesh</div>
                 </div>
               </div>
             </div>
