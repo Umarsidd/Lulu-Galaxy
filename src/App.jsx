@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import WhatsAppButton from './components/WhatsAppButton'
+import ErrorBoundary from './components/ErrorBoundary'
 
 // Lazy load below-fold sections for performance
 const About = lazy(() => import('./components/About'))
@@ -32,46 +33,66 @@ export default function App() {
       {/* Hero — loaded eagerly */}
       <Hero />
 
-      {/* Lazy-loaded sections */}
-      <Suspense fallback={<LoadingFallback />}>
-        <About />
-      </Suspense>
+      {/* Lazy-loaded sections protected by ErrorBoundary */}
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <About />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <Services />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <Services />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <Gallery3D />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <Gallery3D />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <Amenities />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <Amenities />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <Pricing />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <Pricing />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <Testimonials />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <Testimonials />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <FAQ />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <FAQ />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <BookingForm />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <BookingForm />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <LocationContact />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <LocationContact />
+        </Suspense>
+      </ErrorBoundary>
 
-      <Suspense fallback={<LoadingFallback />}>
-        <Footer />
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<LoadingFallback />}>
+          <Footer />
+        </Suspense>
+      </ErrorBoundary>
 
       {/* Floating Buttons */}
       <WhatsAppButton />

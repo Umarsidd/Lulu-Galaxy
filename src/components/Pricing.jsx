@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react'
 import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { 
   Sun, Moon, Check, Phone, MessageCircle, Sparkles, 
-  Zap, Eye, X, Info, Layers, ChevronRight 
+  Zap, Eye, X, Info, Layers, ChevronRight, Clock 
 } from 'lucide-react'
 
 // ─────────────────────────────────────────
