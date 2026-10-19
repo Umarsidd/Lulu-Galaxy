@@ -4,42 +4,65 @@ import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react'
 
 // ─────────────────────────────────────────
 // GALLERY IMAGE DATA
-// Replace the `src` values with your real venue photo URLs.
-// For Google Drive photos use:
-//   https://drive.google.com/thumbnail?id=FILE_ID&sz=w800
 // ─────────────────────────────────────────
 const ALL_IMAGES = [
-  { id: 'g1',  src: 'https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=800&q=80', caption: 'Grand Banquet Entrance',   category: 'exterior' },
-  { id: 'g2',  src: 'https://images.unsplash.com/photo-1510076857177-7470076d4098?w=800&q=80', caption: 'Royal Wedding Stage',       category: 'stage' },
-  { id: 'g3',  src: 'https://images.unsplash.com/photo-1573594547035-c7b87c43b9ab?w=800&q=80', caption: 'Elegant Dining Setup',      category: 'dining' },
-  { id: 'g4',  src: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80', caption: 'Floral Decorations',         category: 'decorations' },
-  { id: 'g5',  src: 'https://images.unsplash.com/photo-1464366400600-7168b8af9bc3?w=800&q=80', caption: 'Beautiful Outdoor Lawn',    category: 'lawn' },
-  { id: 'g6',  src: 'https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?w=800&q=80', caption: 'Night View — Grand Hall',  category: 'night' },
-  { id: 'g7',  src: 'https://images.unsplash.com/photo-1470753937643-efeb931202a9?w=800&q=80', caption: 'Mandap Stage Decoration',  category: 'stage' },
-  { id: 'g8',  src: 'https://images.unsplash.com/photo-1551882547-ff40c4fe1fa7?w=800&q=80', caption: 'Hotel Exterior View',        category: 'exterior' },
-  { id: 'g9',  src: 'https://images.unsplash.com/photo-1572552635104-9c21978bdf7c?w=800&q=80', caption: 'Premium Reception Hall',   category: 'interior' },
-  { id: 'g10', src: 'https://images.unsplash.com/photo-1478146896981-b80fe463b330?w=800&q=80', caption: 'Banquet Dinner Arrangement', category: 'dining' },
-  { id: 'g11', src: 'https://images.unsplash.com/photo-1584999734482-0361aecad844?w=800&q=80', caption: 'Lawn at Night',            category: 'night' },
-  { id: 'g12', src: 'https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&q=80', caption: 'Wedding Decoration',       category: 'decorations' },
-  { id: 'g13', src: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800&q=80', caption: 'Grand Hall Interior',      category: 'interior' },
-  { id: 'g14', src: 'https://images.unsplash.com/photo-1470229722913-7c0e2dbbafd3?w=800&q=80', caption: 'Outdoor Evening Event',   category: 'lawn' },
-  { id: 'g15', src: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80', caption: 'VIP Seating Area',         category: 'interior' },
+  {
+    id: 'grand-entrance',
+    src: '/images/gallery/grand-entrance.jpg',
+    caption: 'Grand Royal Entrance & Floral Welcome Gate',
+    category: ['decorations', 'exterior'],
+  },
+  {
+    id: 'lawn-dining',
+    src: '/images/gallery/lawn-dining.jpg',
+    caption: 'Outdoor Lawn & Catering Counters (Day & Night View)',
+    category: ['lawn', 'dining', 'night', 'stage'],
+  },
+  {
+    id: 'exterior-facade',
+    src: '/images/gallery/exterior-facade.jpg',
+    caption: 'Lulu Galaxy Banquet Hall & Grounds Exterior',
+    category: ['exterior', 'lawn'],
+  },
+  {
+    id: 'hall-entrance',
+    src: '/images/gallery/hall-entrance.jpg',
+    caption: 'Banquet Hall Front Architecture & Grand Glass Facade',
+    category: ['exterior', 'interior'],
+  },
+  {
+    id: 'hall-interior-stage',
+    src: '/images/gallery/hall-interior-stage.jpg',
+    caption: 'Air-Conditioned Grand Banquet Hall & Royal Stage Setup',
+    category: ['interior', 'stage'],
+  },
+  {
+    id: 'luxury-room',
+    src: '/images/gallery/luxury-room.jpg',
+    caption: 'Luxury Air-Conditioned Bridal Suite & Guest Room',
+    category: ['interior'],
+  },
 ]
 
 const CATEGORIES = [
   { id: 'all',          label: 'All Photos' },
   { id: 'exterior',     label: 'Exterior' },
   { id: 'interior',     label: 'Interior' },
-  { id: 'stage',        label: 'Stage' },
-  { id: 'dining',       label: 'Dining Area' },
-  { id: 'decorations',  label: 'Decorations' },
   { id: 'lawn',         label: 'Lawn' },
+  { id: 'decorations',  label: 'Decorations' },
+  { id: 'dining',       label: 'Dining Area' },
   { id: 'night',        label: 'Night View' },
+  { id: 'stage',        label: 'Stage' },
 ]
 
 function filterImages(categoryId) {
   if (categoryId === 'all') return ALL_IMAGES
-  return ALL_IMAGES.filter((img) => img.category === categoryId)
+  return ALL_IMAGES.filter((img) => {
+    if (Array.isArray(img.category)) {
+      return img.category.includes(categoryId)
+    }
+    return img.category === categoryId
+  })
 }
 
 // ─────────────────────────────────────────
@@ -98,7 +121,9 @@ function Lightbox({ image, images, onClose, onNavigate }) {
             />
             <div className="p-3 sm:p-4 bg-gradient-to-t from-black/95 via-black/80 to-transparent">
               <p className="font-playfair text-white text-base sm:text-lg leading-tight">{image.caption}</p>
-              <p className="font-poppins text-gold text-xs sm:text-sm capitalize mt-0.5">{image.category}</p>
+              <p className="font-poppins text-gold text-xs sm:text-sm capitalize mt-0.5">
+                {Array.isArray(image.category) ? image.category.join(' • ') : image.category}
+              </p>
             </div>
           </div>
 
@@ -133,10 +158,15 @@ function ImageGrid({ images, onImageClick }) {
           initial={{ opacity: 0, scale: 0.92 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: i * 0.03, duration: 0.35 }}
-          className="img-frame aspect-[4/3] cursor-pointer group rounded-xl"
+          className="relative overflow-hidden border border-gold/30 hover:border-gold aspect-[4/3] cursor-pointer group rounded-xl bg-neutral-950 transition-all duration-300 hover:shadow-xl hover:shadow-gold/15"
           onClick={() => onImageClick(image)}
         >
-          <img src={image.src} alt={image.caption} loading="lazy" className="w-full h-full object-cover" />
+          <img
+            src={image.src}
+            alt={image.caption}
+            loading="lazy"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          />
           <div className="absolute inset-0 flex items-end p-2.5 sm:p-3 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
             style={{ background: 'linear-gradient(to top, rgba(0,0,0,0.85), transparent)' }}>
             <div>

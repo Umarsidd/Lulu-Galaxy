@@ -13,7 +13,7 @@ export default function Hero() {
       <div 
         className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat scale-105 transition-transform duration-10000 opacity-40"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1519167758481-83f550bb49b3?w=1600&q=80')`,
+          backgroundImage: `url('/images/gallery/lawn-dining.jpg')`,
         }}
       />
 
