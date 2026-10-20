@@ -38,11 +38,11 @@ export default function LocationContact() {
             className="space-y-4 sm:space-y-6"
           >
             {/* Google Map Embed */}
-            <div className="rounded-2xl overflow-hidden gold-border"
+            <div className="rounded-2xl overflow-hidden gold-border relative group"
               style={{ boxShadow: '0 0 30px rgba(212,175,55,0.15)' }}>
               <iframe
                 title="Lulu Galaxy Banquet Hall Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3569.8065498395!2d82.1659!3d27.4305!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDI1JzQ5LjgiTiA4MsKwMDknNTcuMiJF!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
+                src="https://maps.google.com/maps?q=Lulu+Galaxy+Banquet+Hall+Dharampur+Balrampur&t=&z=16&ie=UTF8&iwloc=&output=embed"
                 width="100%"
                 height="280"
                 style={{ border: 0, filter: 'invert(0.9) hue-rotate(180deg)' }}
@@ -55,10 +55,10 @@ export default function LocationContact() {
             {/* Open in Maps Button */}
             <a
               id="open-maps-btn"
-              href="https://www.google.com/maps/search/Gas+Godown+Road+Dharampur+Near+Fire+Station+Balrampur+Uttar+Pradesh"
+              href="https://maps.app.goo.gl/GSsb2wrzB7WdfZLK9"
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-outline-gold w-full justify-center text-sm py-3.5"
+              className="btn-outline-gold w-full justify-center text-sm py-3.5 hover:bg-gold hover:text-black transition-all"
               style={{ display: 'flex' }}
             >
               <ExternalLink size={16} />
@@ -74,21 +74,28 @@ export default function LocationContact() {
             className="space-y-4 sm:space-y-6"
           >
             {/* Address */}
-            <div className="glass-card-dark p-4 sm:p-6">
+            <a
+              href="https://maps.app.goo.gl/GSsb2wrzB7WdfZLK9"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="glass-card-dark p-4 sm:p-6 block hover:border-gold/50 transition-all duration-300 group"
+            >
               <div className="flex gap-3.5 sm:gap-4">
-                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0">
+                <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-xl bg-gold/20 border border-gold/30 flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform">
                   <MapPin className="text-gold" size={20} />
                 </div>
                 <div>
-                  <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2">Address</h3>
-                  <p className="font-poppins text-white/60 text-xs sm:text-sm leading-relaxed">
+                  <h3 className="font-poppins font-semibold text-white text-xs sm:text-sm mb-1 sm:mb-2 flex items-center gap-1.5">
+                    Address <ExternalLink size={12} className="text-gold/70 group-hover:text-gold" />
+                  </h3>
+                  <p className="font-poppins text-white/60 text-xs sm:text-sm leading-relaxed group-hover:text-white/80 transition-colors">
                     Gas Godown Road, Dharampur,<br />
                     Near Fire Station,<br />
                     Balrampur, Uttar Pradesh
                   </p>
                 </div>
               </div>
-            </div>
+            </a>
 
             {/* Phone */}
             <a

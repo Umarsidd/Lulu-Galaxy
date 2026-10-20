@@ -240,7 +240,7 @@ export default function Testimonials() {
             </p>
             <a
               id="google-reviews-btn"
-              href="https://www.google.com/maps/search/Lulu+Galaxy+Banquet+Hall+Balrampur"
+              href="https://maps.app.goo.gl/GSsb2wrzB7WdfZLK9"
               target="_blank"
               rel="noopener noreferrer"
               className="btn-outline-gold text-sm px-6 py-3"

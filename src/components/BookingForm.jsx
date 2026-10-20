@@ -26,8 +26,9 @@ const initialForm = {
 }
 
 export default function BookingForm() {
-  const [form, setForm]     = useState(initialForm)
-  const [status, setStatus] = useState('idle') // idle | loading | success | error
+  const [form, setForm]         = useState(initialForm)
+  const [status, setStatus]     = useState('idle') // idle | loading | success | error
+  const [waUrl, setWaUrl]       = useState('')
   const ref     = useRef()
   const formRef = useRef()
   const inView  = useInView(ref, { once: true, margin: '-80px' })
@@ -38,14 +39,53 @@ export default function BookingForm() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setStatus('loading')
-    try {
-      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY)
-      setStatus('success')
-      setForm(initialForm)
-    } catch (err) {
-      console.error('EmailJS error:', err)
-      setStatus('error')
+
+    // Format date nicely
+    let formattedDate = form.event_date
+    if (form.event_date) {
+      try {
+        formattedDate = new Date(form.event_date).toLocaleDateString('en-IN', {
+          day: 'numeric',
+          month: 'short',
+          year: 'numeric',
+        })
+      } catch (err) {
+        formattedDate = form.event_date
+      }
     }
+
+    // Format WhatsApp message
+    const messageText = `*New Booking Inquiry - Lulu Galaxy Banquet & Hotel*
+━━━━━━━━━━━━━━━━━━━━━━━
+👤 *Name:* ${form.name.trim()}
+📞 *Phone:* ${form.phone.trim()}
+📅 *Event Date:* ${formattedDate}
+🎉 *Event Type:* ${form.event_type}
+👥 *Expected Guests:* ${form.guest_count}
+💬 *Message:* ${form.message.trim() || 'None'}
+━━━━━━━━━━━━━━━━━━━━━━━
+Sent from Website Inquiry Form`
+
+    const targetWaUrl = `https://wa.me/918707408916?text=${encodeURIComponent(messageText)}`
+    setWaUrl(targetWaUrl)
+
+    // Optional EmailJS sending if configured with real keys
+    const isEmailConfigured =
+      EMAILJS_SERVICE_ID &&
+      EMAILJS_SERVICE_ID !== 'YOUR_SERVICE_ID' &&
+      EMAILJS_PUBLIC_KEY !== 'YOUR_PUBLIC_KEY'
+
+    if (isEmailConfigured) {
+      try {
+        await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, formRef.current, EMAILJS_PUBLIC_KEY)
+      } catch (err) {
+        console.warn('EmailJS error (WhatsApp fallback active):', err)
+      }
+    }
+
+    // Open WhatsApp in new tab / app
+    window.open(targetWaUrl, '_blank')
+    setStatus('success')
   }
 
   return (
@@ -134,13 +174,32 @@ export default function BookingForm() {
                     style={{ boxShadow: '0 0 40px rgba(212,175,55,0.4)' }}>
                     <CheckCircle size={36} className="text-gold" />
                   </div>
-                  <h4 className="font-playfair text-white text-xl sm:text-2xl mb-2 sm:mb-3">Thank You!</h4>
-                  <p className="text-white/60 font-poppins text-xs sm:text-sm mb-6">
-                    Your inquiry has been received. Our team will contact you within 24 hours.
+                  <h4 className="font-playfair text-white text-xl sm:text-2xl mb-2 sm:mb-3">Inquiry Ready!</h4>
+                  <p className="text-white/70 font-poppins text-xs sm:text-sm mb-6 max-w-sm mx-auto">
+                    WhatsApp is opening with your booking details. If it did not open automatically, click the button below:
                   </p>
-                  <button onClick={() => setStatus('idle')} className="btn-outline-gold">
-                    Send Another Inquiry
-                  </button>
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
+                    {waUrl && (
+                      <a
+                        href={waUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-gold inline-flex items-center gap-2 text-sm px-6 py-3"
+                      >
+                        <MessageCircle size={18} /> Open WhatsApp Chat
+                      </a>
+                    )}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setStatus('idle')
+                        setForm(initialForm)
+                      }}
+                      className="btn-outline-gold text-xs px-5 py-3"
+                    >
+                      Send Another Inquiry
+                    </button>
+                  </div>
                 </motion.div>
               ) : (
                 <form ref={formRef} onSubmit={handleSubmit} className="space-y-3.5 sm:space-y-4">
@@ -195,15 +254,15 @@ export default function BookingForm() {
                   )}
 
                   <button id="form-submit-btn" type="submit" disabled={status === 'loading'}
-                    className="btn-gold w-full justify-center text-base py-4" style={{ display: 'flex' }}>
+                    className="btn-gold w-full justify-center text-base py-4 font-semibold shadow-lg shadow-gold/20" style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
                     {status === 'loading'
-                      ? <><Loader size={18} className="animate-spin" /> Sending Inquiry...</>
-                      : <><Send size={18} /> Send Inquiry</>
+                      ? <><Loader size={18} className="animate-spin" /> Connecting to WhatsApp...</>
+                      : <><MessageCircle size={18} /> Send Inquiry via WhatsApp</>
                     }
                   </button>
 
                   <p className="text-white/30 font-poppins text-xs text-center">
-                    We'll respond within 24 hours · Your information is secure
+                    Direct WhatsApp inquiry · We'll respond promptly
                   </p>
                 </form>
               )}

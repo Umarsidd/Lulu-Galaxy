@@ -123,12 +123,17 @@ export default function Footer() {
               <span className="absolute -bottom-2 left-0 w-10 h-0.5 bg-gold rounded-full" />
             </h3>
             <div className="space-y-4">
-              <div className="flex gap-3">
-                <MapPin size={16} className="text-gold flex-shrink-0 mt-0.5" />
-                <p className="text-white/55 font-poppins text-xs sm:text-sm leading-relaxed">
+              <a
+                href="https://maps.app.goo.gl/GSsb2wrzB7WdfZLK9"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex gap-3 footer-link group items-start"
+              >
+                <MapPin size={16} className="text-gold flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform" />
+                <p className="text-white/55 font-poppins text-xs sm:text-sm leading-relaxed group-hover:text-gold transition-colors">
                   Gas Godown Road, Dharampur, Near Fire Station, Balrampur, UP
                 </p>
-              </div>
+              </a>
               <a href="tel:8707408916" id="footer-phone" className="flex gap-3 items-center footer-link">
                 <Phone size={16} className="text-gold flex-shrink-0" />
                 <span className="text-gold font-semibold text-xs sm:text-sm">+91 8707408916</span>
